@@ -35,7 +35,7 @@ app.get("/todos", async (req,res)=>{
 })
 
 
-// To set todo to completed 
+// To set todo as completed 
 app.put("/completed", async (req,res)=>{
     const createPayload = req.body;
     const parsedPayload = updateTodo.safeParse(createPayload);
@@ -45,7 +45,7 @@ app.put("/completed", async (req,res)=>{
         })
         return;
     }
-    await todo.update({
+    await todo.updateOne({
         _id:req.body.id
     }, {
         completed:true
